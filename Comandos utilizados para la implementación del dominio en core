@@ -22,3 +22,27 @@ Get-Windowsfeature
 #
 Install-WindowsFeature -name AD-Domain-Services,DNS -IncludeManagementTools
 # Instala el DNS y el AD Domain Services.
+#
+# Scrip para la implementación de AD DS
+#
+$dominioFQDN = "X"
+$dominioNETBIOS = "X"
+$adminPass = "X"
+Import-Module ADDSDeployment
+Install-ADDSForest `
+-CreateDnsDelegation:$False `
+-DatabasePath "C:\Windows\NTDS" `
+-DomainMode "Win2016" `
+-DomainName $dominioFQDN `
+-DomainNetbiosName $dominioNETBIOS `
+-SafeModeAdministratorPassword (ConvertTo-SecureString -string $adminPass -AsPlainText -Force)
+-ForestMode "Win2016" `
+-InstallDns:$True `
+-LogPath "C:\Windows\NTDS" `
+-NoRebootOnCompletion:$False `
+-SysvolPath "C:\Windows\SYSVOL" `
+-Force:$true 
+#
+# Explicación del funcionamiento del script
+#
+# Import-Module ADDSDeployment  
