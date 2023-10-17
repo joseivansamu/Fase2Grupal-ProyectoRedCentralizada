@@ -10,9 +10,9 @@ Restart-Computer -force
 #
 # Explicación del funcionamineto del script
 #
-# $nameServer="X" introduce el nombre del servidor.
-# $addressIP="XXX.XXX.XXX.XXX" introduce la ip del servidor.
-# $networkInternal="Ethernet X" introduce el adaptador interno del servidor.
+# $nameServer= introduce el nombre del servidor.
+# $addressIP=  introduce la ip del servidor.
+# $networkInternal= introduce el adaptador interno del servidor.
 # Rename-Computer -NewName $nameServer  cambia el nombre del servidor al introducido anteriormente.
 # Get-NetAdapter –name $networkInternal | Remove-NetIPAddress -Confirm:$false y Get-NetAdapter –name $networkInternal | New-NetIPAddress –addressfamily IPv4 –ipaddress $addressIP –prefixlength 24 –type unicast  cambian la dirección ip de la red interna.
 # Restart-Computer -force  reinicia el equipo para que se apliquen los cambios.
@@ -45,4 +45,16 @@ Install-ADDSForest `
 #
 # Explicación del funcionamiento del script
 #
-# Import-Module ADDSDeployment  
+# Import-Module ADDSDeployment  Importa el módulo de despliegue de las AD DS a la sesión de trabajo actual.
+# Install-ADDSForest  Instala un controlador de dominio en un bosque nuevo.
+# CreateDnsDelegation Indica la si hay necesidad de crear una delegación DNS que haga rederencia al nuevop servidor DNS.
+# DatabasePath  Ruta donde se guarda la base de datos de dominio.
+# DomainMode  Detalla el nivel funcional del dominio a la hora de la creación de un nuevo bosque.
+# DomainName  Detalla el nombre del dominio para el dominio raíz.
+# DomainNetbiosName  Detalla el nombre del NetBIOS para el dominio del nuevo bosque. (15 caracteres como mínimo)
+# SafeModeAdministratorPassword  Detalla la clave del administrador de dominio.
+# ForestMode  Detalla el que sera el nivel funcional del nuevo bosque.
+# InstallDNS  Detalla si el servidor DNS estará instalado y configurado.
+# NoRebotOnCompletion: Detalla si queremos que se reinicie el sistema al acabar el proceso.
+# SysvolPath  Ruta de guradado de los archivos sysvol.
+# Force  Elimina cualquier advertencia a la hora de la instalación del bosque.
