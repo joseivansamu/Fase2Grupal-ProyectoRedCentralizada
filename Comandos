@@ -1,0 +1,24 @@
+# Comando utilizado para la crecaión del usuario parcial1.
+#
+New-ADUser -name "parcial1" -Path "OU=administración,OU=Usuarios,DC=EDU-GVA,DC=MYLOCAL" -SamAccountName "adparcial" -UserPrincipalName "adparcial1@EDU-GVA.MYLOCAL" -GivenName "parcial1" -displayname "parcial1" -AccountPassword (ConvertTo-SecureString "x" -AsPlainText -Force) -ChangePasswordAtLogon $false -Enabled $true
+#
+# Explicación del coamndo.
+#
+# New-ADuser - Es el comando de Powershell que se utiliza para crear un nuevo usuario.
+# -Name "parcial1" - Aquí se asigna el nombre del usuario que se va a crear.
+# -Path "OU=administración,OU=Usuarios,DC=EDU-GVA,DC=MYLOCAL" - Indica la ubicación en la que se va a crear el usuario dentro del arbol. En este caso se creará en en la unidad organizativa Usuarios la cual se encuentra dentro de la unidad organizativa administración dentro del dominio EDU-GVA.MYLOCAL.
+# -SamAccountName "adparcial" - Es el nombre que se utilizará para identificar al usuario.
+# -UserPrincipalName "adparcial1@EDU-GVA.MYLOCAL" - Será otra de las formas de identificar el usuario, es una combinación del nombre de cuenta junto al nombre del dominio como sufijo.
+# -GivenName "parcial1" - Será el nombre propio del usuario.
+# -DisplayName "parcial1" - Será el nombre que aparecera en pantalla.
+# -AccountPassword (ConvertTo-SecureString "x" -AsPlainText -Force) - Mendiante este comando se establece la contraseña del usuario.
+# -ChangePasswordAtLogon $false - Establece si la contraseña debera de ser cambiada la primera vez que se inicie sesión, en este caso no será necesario.
+# -Enabled $true - Este último parámetro nos determina si la cuenta se habilitará nada mas se cree la cuenta.
+#
+# Comando utilizado para asignar el usuario a un grupo.
+#
+Add-AdgroupMenber -identity Parcial1 -menmbers adparcial1
+#
+# Add-AdGroupMember - Es el comando utilizzado en poweshell para añadir miembros a un grupo.
+# -Identity Parcial1 - Especifica el grupo al que queremos agergar el usuario.
+# -Members adparcial1 - Especifica el usuario que vamos agregar al grupo que queramos.
